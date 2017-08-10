@@ -14,6 +14,14 @@ void main() {
 
 	#include <clipping_planes_fragment>
 
+	#ifndef DOUBLE_SIDED
+		#ifdef FLIP_SIDED
+			if (vColor.x <= 0.99 || vColor.y != 0.0 || vColor.z != 0.0) discard;
+		#else
+			if (vColor.x > 0.99 && vColor.y == 0.0 && vColor.z == 0.0) discard;
+		#endif
+	#endif
+
 	vec3 outgoingLight = vec3( 0.0 );
 	vec4 diffuseColor = vec4( diffuse, opacity );
 

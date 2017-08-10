@@ -15,7 +15,7 @@ void main() {
 	#include <project_vertex>
 
 	#ifdef USE_SIZEATTENUATION
-		gl_PointSize = size * ( scale / - mvPosition.z );
+		gl_PointSize = size * ( scale / - mvPosition.z ) * length(transformed);
 	#else
 		gl_PointSize = size;
 	#endif
